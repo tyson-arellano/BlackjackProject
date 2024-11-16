@@ -1,5 +1,7 @@
 package com.skilldistillery.cards.blackjack;
 
+import com.skilldistillery.cards.common.Card;
+
 public class Player {
 	
 	protected BlackjackHand hand;
@@ -9,6 +11,8 @@ public class Player {
 	public Player () {
 		hand = new BlackjackHand();
 		}
-	
+	public void hit(Card card) {
+		hand.addCard(card);
+	}
 	//No getHand
 }

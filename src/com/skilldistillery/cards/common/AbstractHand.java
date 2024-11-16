@@ -12,4 +12,18 @@ public abstract class AbstractHand {
 	}
 	
 	public abstract int getHandValue();
+	
+	public void addCard ( Card card) {
+		cardsInHand.add(card);
+	}
+	public void clearHand() {
+		cardsInHand.removeAll(cardsInHand);
+	}
+
+	@Override
+	public String toString() {
+		return "Current cards in hand " + cardsInHand;
+	}
+	
+	
 }

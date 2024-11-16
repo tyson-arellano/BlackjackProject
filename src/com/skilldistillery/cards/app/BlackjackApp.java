@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import com.skilldistillery.cards.blackjack.Dealer;
 import com.skilldistillery.cards.blackjack.Player;
+import com.skilldistillery.cards.common.Card;
+import com.skilldistillery.cards.common.Deck;
 
 public class BlackjackApp {
 	
@@ -25,6 +27,9 @@ public class BlackjackApp {
 		
 	}
 
+//	public Card dealInitialCards() {
+//		
+//	}
 	public void startGame() {
 		
 		
