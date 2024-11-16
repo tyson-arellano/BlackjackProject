@@ -13,11 +13,7 @@ public class Dealer extends Player {
 		BlackjackHand hand = new BlackjackHand();
 	}
 	
-	public void hitAfterPlayer(Card card) {
-		
-			hand.addCard(card);
-		
-	}
+	
 	
 	
 	public Card dealCard() {

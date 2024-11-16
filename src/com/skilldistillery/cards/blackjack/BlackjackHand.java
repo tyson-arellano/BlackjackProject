@@ -14,7 +14,7 @@ public class BlackjackHand extends AbstractHand {
 		return sum;
 	}
 	public boolean isBlackjack() {
-		if (getHandValue() == 21) { //TODO add && to take only initial hand
+		if (getHandValue() == 21) { 
 			return true;
 		}return false;
 	}
