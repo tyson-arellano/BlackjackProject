@@ -18,12 +18,16 @@ public abstract class AbstractHand {
 	}
 	public void clearHand() {
 		cardsInHand.removeAll(cardsInHand);
+		
 	}
 
-	@Override
-	public String toString() {
-		return "Current cards in hand " + cardsInHand;
-	}
 	
+	public String toString() {
+		return cardsInHand + "";
+	}
+	public Card getCard(int cardIndex) {
+		
+		return cardsInHand.get(cardIndex);
+	}
 	
 }
