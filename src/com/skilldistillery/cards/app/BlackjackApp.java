@@ -20,7 +20,7 @@ public class BlackjackApp {
 		dealer = new Dealer();
 		player = new Player();
 		sc = new Scanner(System.in);
-		
+
 	}
 
 	public static void main(String[] args) {
@@ -47,11 +47,21 @@ public class BlackjackApp {
 			boolean keepGoing = true;
 			boolean dealerTurn = true;
 
+			if (player.hand.isBlackjack()) {
+				System.out.println("Blackjack!!!");
+				round = false;
+			}
+			if (!dealer.hand.isBlackjack() && player.hand.isBlackjack()) {
+				System.out.println(dealer + "\n" + player + "\n");
+				System.out.println("You Win!!");
+				round = false;
+			}
+			if (dealer.hand.isBlackjack() && player.hand.isBlackjack()) {
+				System.out.println(dealer + "\n" + player + "\n");
+				System.out.println("You and the Dealer BlackJack! This round is a push.");
+				round = false;
+			}
 			do {
-				if (player.hand.isBlackjack()) {
-					System.out.println("Blackjack!!! It's now the Dealer's turn. \n");
-					keepGoing = false;
-				}
 				System.out.println("Would you like to hit or stand? Type (h) for hit or (s) for stand. \n");
 				String hitOrStand = sc.next();
 				try {
@@ -62,7 +72,7 @@ public class BlackjackApp {
 						if (player.hand.isBust()) {
 							System.out.println("Oops! You busted! Dealer wins!");
 							keepGoing = false;
-							
+
 						}
 
 						if (player.handValue() == 21) {
@@ -85,46 +95,48 @@ public class BlackjackApp {
 				}
 
 			} while (keepGoing);
+
 			
+
 			if (player.hand.isBust()) {
 				break;
 			}
-			
-		do {
-			
-			
-			if (dealer.handValue() < 17) {
-				System.out.println(dealer + "\n");
-				System.out.println("Dealer must hit \n");
-				dealer.hit(dealer.dealCard());
-			}
-
-			if (dealer.handValue() >= 17 && dealer.handValue() == player.handValue() ) {
-				System.out.println(dealer + " \n " + player + " \n ");
-				System.out.println("Hands are equal. This round is a push.");
-				dealerTurn = false;
-			}
-			
-			if (dealer.handValue() >= 17 && dealer.handValue() <= 21 && dealer.handValue() > player.handValue()) {
-				System.out.println(dealer + " \n " + player + " \n ");
-				System.out.println("Dealer wins!");
-				dealerTurn = false;
-			}
-			
-			if (dealer.hand.isBust()) {
-				System.out.println(dealer + "\n");
-				System.out.println("Dealer busts! You win!!");
-				dealerTurn = false;
-			}
-			
-			if (dealer.handValue() >= 17 && dealer.handValue() < player.handValue() ) {
-				System.out.println(dealer + "\n" + player + "\n");
-				System.out.println("Your hand is higher than the Dealer's hand. You win!!");
-				dealerTurn = false;
-			}
-		}while(dealerTurn);
-		round = false;
 		
+
+			do {
+
+				if (dealer.handValue() < 17) {
+					System.out.println(dealer + "\n");
+					System.out.println("Dealer must hit \n");
+					dealer.hit(dealer.dealCard());
+				}
+
+				if (dealer.handValue() >= 17 && dealer.handValue() == player.handValue()) {
+					System.out.println(dealer + " \n " + player + " \n ");
+					System.out.println("Hands are equal. This round is a push.");
+					dealerTurn = false;
+				}
+
+				if (dealer.handValue() >= 17 && dealer.handValue() <= 21 && dealer.handValue() > player.handValue()) {
+					System.out.println(dealer + " \n " + player + " \n ");
+					System.out.println("Dealer wins!");
+					dealerTurn = false;
+				}
+
+				if (dealer.hand.isBust()) {
+					System.out.println(dealer + "\n");
+					System.out.println("Dealer busts! You win!!");
+					dealerTurn = false;
+				}
+
+				if (dealer.handValue() >= 17 && dealer.handValue() < player.handValue()) {
+					System.out.println(dealer + "\n" + player + "\n");
+					System.out.println("Your hand is higher than the Dealer's hand. You win!!");
+					dealerTurn = false;
+				}
+			} while (dealerTurn);
+			round = false;
+
 		} while (round);
 		System.out.println("\n Thanks for playing!");
 		sc.close();
