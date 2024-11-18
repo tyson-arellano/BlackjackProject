@@ -50,16 +50,19 @@ public class BlackjackApp {
 			if (player.hand.isBlackjack()) {
 				System.out.println("Blackjack!!!");
 				round = false;
+				break;
 			}
 			if (!dealer.hand.isBlackjack() && player.hand.isBlackjack()) {
 				System.out.println(dealer + "\n" + player + "\n");
 				System.out.println("You Win!!");
 				round = false;
+				break;
 			}
 			if (dealer.hand.isBlackjack() && player.hand.isBlackjack()) {
 				System.out.println(dealer + "\n" + player + "\n");
 				System.out.println("You and the Dealer BlackJack! This round is a push.");
 				round = false;
+				break;
 			}
 			do {
 				System.out.println("Would you like to hit or stand? Type (h) for hit or (s) for stand. \n");
