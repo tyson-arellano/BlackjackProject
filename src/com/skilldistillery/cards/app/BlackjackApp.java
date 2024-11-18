@@ -47,20 +47,15 @@ public class BlackjackApp {
 			boolean keepGoing = true;
 			boolean dealerTurn = true;
 
-			if (player.hand.isBlackjack()) {
-				System.out.println("Blackjack!!!");
-				round = false;
-				break;
-			}
 			if (!dealer.hand.isBlackjack() && player.hand.isBlackjack()) {
-				System.out.println(dealer + "\n" + player + "\n");
-				System.out.println("You Win!!");
+				System.out.println("BLACKJACK!! And the dealer does not have Blackjack.\n \n *** YOU WIN!! *** \n");
 				round = false;
 				break;
 			}
 			if (dealer.hand.isBlackjack() && player.hand.isBlackjack()) {
-				System.out.println(dealer + "\n" + player + "\n");
-				System.out.println("You and the Dealer BlackJack! This round is a push.");
+				System.out.println("BLACKJACK!! \n");
+				System.out.println(dealer + "\n");
+				System.out.println(" The dealer also has BlackJack! This round is a push.\n");
 				round = false;
 				break;
 			}
@@ -79,7 +74,7 @@ public class BlackjackApp {
 						}
 
 						if (player.handValue() == 21) {
-							System.out.println("You have 21! It's the Dealer's turn");
+							System.out.println("You have 21! It's the Dealer's turn \n");
 							keepGoing = false;
 						}
 					} else if (hitOrStand.equalsIgnoreCase("s")) {
