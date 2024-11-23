@@ -28,9 +28,9 @@ public class Dealer extends Player {
 
 	@Override
 	public String toString() {
-		return "Dealer has: " + hand + " with a value of: " + hand.getHandValue();
+		return "Dealer has: " + getHand() + " with a value of: " + getHand().getHandValue();
 	}
 	public String initial() {
-		return "Dealer is showing: " + hand.getCard(1) + " with a value of " + hand.getCard(1).getValue();
+		return "Dealer is showing: " + getHand().getCard(1) + " with a value of " + getHand().getCard(1).getValue();
 	}
 }

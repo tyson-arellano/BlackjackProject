@@ -47,12 +47,12 @@ public class BlackjackApp {
 			boolean keepGoing = true;
 			boolean dealerTurn = true;
 
-			if (!dealer.hand.isBlackjack() && player.hand.isBlackjack()) {
+			if (!dealer.getHand().isBlackjack() && player.getHand().isBlackjack()) {
 				System.out.println("BLACKJACK!! And the dealer does not have Blackjack.\n \n *** YOU WIN!! *** \n");
 				round = false;
 				break;
 			}
-			if (dealer.hand.isBlackjack() && player.hand.isBlackjack()) {
+			if (dealer.getHand().isBlackjack() && player.getHand().isBlackjack()) {
 				System.out.println("BLACKJACK!! \n");
 				System.out.println(dealer + "\n");
 				System.out.println(" The dealer also has BlackJack! This round is a push.\n");
@@ -67,7 +67,7 @@ public class BlackjackApp {
 						player.hit(dealer.dealCard());
 						System.out.println(player + "\n");
 
-						if (player.hand.isBust()) {
+						if (player.getHand().isBust()) {
 							System.out.println("Oops! You busted! Dealer wins!");
 							keepGoing = false;
 
@@ -96,7 +96,7 @@ public class BlackjackApp {
 
 			
 
-			if (player.hand.isBust()) {
+			if (player.getHand().isBust()) {
 				break;
 			}
 		
@@ -121,7 +121,7 @@ public class BlackjackApp {
 					dealerTurn = false;
 				}
 
-				if (dealer.hand.isBust()) {
+				if (dealer.getHand().isBust()) {
 					System.out.println(dealer + "\n");
 					System.out.println("Dealer busts! You win!!");
 					dealerTurn = false;

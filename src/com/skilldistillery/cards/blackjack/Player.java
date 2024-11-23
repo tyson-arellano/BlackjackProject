@@ -4,7 +4,7 @@ import com.skilldistillery.cards.common.Card;
 
 public class Player {
 	
-	public BlackjackHand hand;
+	private BlackjackHand hand;
 	
 	//No list of cards instance. access cards through hand.
 	
@@ -22,4 +22,8 @@ public class Player {
 	public int handValue() {
 		return hand.getHandValue();
 	}
+	public BlackjackHand getHand() {
+		return hand;
+	}
+	
 }
