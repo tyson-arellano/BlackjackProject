@@ -25,5 +25,7 @@ public class Player {
 	public BlackjackHand getHand() {
 		return hand;
 	}
-	
+	public void clearHand() {
+		hand.clearHand();
+	}
 }

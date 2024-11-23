@@ -40,7 +40,7 @@ public class BlackjackApp {
 	public void startGame() {
 		boolean round = true;
 
-		do {
+		outer : do {
 			dealInitialCards();
 			System.out.println(dealer.initial() + "\n");
 			System.out.println(player + "\n");
@@ -69,6 +69,35 @@ public class BlackjackApp {
 
 						if (player.getHand().isBust()) {
 							System.out.println("Oops! You busted! Dealer wins!");
+							boolean newGame = true;
+							game  : do {
+							System.out.println("\n *** Would you like to play another hand? ***\n");
+							System.out.println("******* Type Y for yes and N for no. *******");
+							System.out.println("********************************************\n");
+							String playAgain = sc.next();
+							
+							try {
+								if (playAgain.equalsIgnoreCase("y")) {
+									player.clearHand();
+									dealer.clearHand();
+									continue outer;
+								}
+								else if(playAgain.equalsIgnoreCase("n")) {
+									
+									newGame = false;
+								}
+								
+								else {
+									throw new InputMismatchException("Invalid input. \n");
+								}
+							} catch (InputMismatchException e) {
+								System.out.println(e.getMessage());
+								continue game;
+							}
+							
+							}while(newGame);
+							
+							
 							keepGoing = false;
 
 						}
@@ -97,7 +126,7 @@ public class BlackjackApp {
 			
 
 			if (player.getHand().isBust()) {
-				break;
+			
 			}
 		
 
@@ -133,8 +162,34 @@ public class BlackjackApp {
 					dealerTurn = false;
 				}
 			} while (dealerTurn);
+			boolean newGame = true;
+			game  : do {
+			System.out.println("\n *** Would you like to play another hand? ***\n");
+			System.out.println("******* Type Y for yes and N for no. *******");
+			System.out.println("********************************************\n");
+			String playAgain = sc.next();
+			
+			try {
+				if (playAgain.equalsIgnoreCase("y")) {
+					player.clearHand();
+					dealer.clearHand();
+					continue outer;
+				}
+				else if(playAgain.equalsIgnoreCase("n")) {
+					
+					newGame = false;
+				}
+				
+				else {
+					throw new InputMismatchException("Invalid input. \n");
+				}
+			} catch (InputMismatchException e) {
+				System.out.println(e.getMessage());
+				continue game;
+			}
+			
+			}while(newGame);
 			round = false;
-
 		} while (round);
 		System.out.println("\n Thanks for playing!");
 		sc.close();
